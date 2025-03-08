@@ -55,6 +55,7 @@ module emu
 	input  [11:0] HDMI_WIDTH,
 	input  [11:0] HDMI_HEIGHT,
 	output        HDMI_FREEZE,
+	output        gun_border_en,
 
 `ifdef MISTER_FB
 	// Use framebuffer in DDRAM
@@ -187,6 +188,7 @@ assign VGA_DISABLE = 0;
 
 assign AUDIO_S   = 1;
 assign HDMI_FREEZE = 0;
+assign gun_border_en = status[47];
 
 wire  [1:0] ar = status[49:48];
 
@@ -239,6 +241,7 @@ localparam CONF_STR = {
 	"P1O[55:54],Scale,Normal,V-Integer,Narrower HV-Integer,Wider HV-Integer;",
 	"P1-;",
 	"P1O[30],320x224 Aspect,Original,Corrected;",
+	"P1oF,Sinden Boarder,Off,On;",
 	"P1O[29],Border,No,Yes;",
 	"P1O[46],Composite Blend,Off,On;",
 	"P1O[10],CRAM Dots,Off,On;",
